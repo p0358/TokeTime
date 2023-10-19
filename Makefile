@@ -10,7 +10,7 @@ INSTALL_TARGET_PROCESSES = SpringBoard
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = PopeTime
+TWEAK_NAME = TokeTime
 $(TWEAK_NAME)_FILES = Tweak.xm
 $(TWEAK_NAME)_FRAMEWORKS = UIKit AVFoundation
 $(TWEAK_NAME)_EXTRA_FRAMEWORKS += Cephei
@@ -18,5 +18,5 @@ $(TWEAK_NAME)_CFLAGS = -fobjc-arc -Wno-c++11-extensions
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
-SUBPROJECTS += PopeTimePrefs
+SUBPROJECTS += TokeTimePrefs
 include $(THEOS_MAKE_PATH)/aggregate.mk

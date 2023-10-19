@@ -4,7 +4,7 @@
 #import <objc/runtime.h>
 #include <rootless.h>
 
-#define kOverlayViewTag 21372137
+#define kOverlayViewTag 6942069
 
 // iOS 13
 @interface SBFLockScreenDateViewController: UIViewController
@@ -29,16 +29,16 @@ static void prefsDidUpdate() {
     werePrefsUpdated = true;
 }
 
-static inline BOOL is2137() {
-    NSDate * now = [NSDate date];
+static inline BOOL is420() {
+    NSDate *now = [NSDate date];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"HH:mm"];
+    [outputFormatter setDateFormat:@"h:mm"];
     NSString *newDateString = [outputFormatter stringFromDate:now];
 
-    return [[NSString stringWithFormat: @"%@", newDateString] isEqualToString: @"21:37"];
+    return [newDateString isEqualToString: @"4:20"];
 }
 
-static void updatePopeView(UIView *v) {
+static void updateTokeView(UIView *v) {
 
     BOOL isAlreadyThere = false;
 
@@ -53,37 +53,21 @@ static void updatePopeView(UIView *v) {
     }
     werePrefsUpdated = false;
 
-    if (isEnabledAllTheTime || is2137()) {
+    if (isEnabledAllTheTime || is420()) {
 
         if (!isAlreadyThere) {
-
-            UIImageView *popeImageView = [[UIImageView alloc] init];
-
-            NSArray *animationFrames = [NSArray arrayWithObjects:
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope0.png")],
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope1.png")],
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope2.png")],
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope3.png")],
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope4.png")],
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope5.png")],
-                [UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/pope6.png")],
-            nil];
-            
-            popeImageView.frame = v.superview.bounds;
-            popeImageView.tag = kOverlayViewTag;
+            UIImageView *snoopImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:ROOT_PATH_NS(@"/Library/Application Support/TokeTime/snoop.png")]];
+            snoopImageView.frame = v.superview.bounds;
+            snoopImageView.tag = kOverlayViewTag;
             switch (displayMode) {
-                case 1: popeImageView.contentMode = UIViewContentModeScaleAspectFit; break;
-                case 2: popeImageView.contentMode = UIViewContentModeScaleAspectFill; break;
+                case 1: snoopImageView.contentMode = UIViewContentModeScaleAspectFit; break;
+                case 2: snoopImageView.contentMode = UIViewContentModeBottom; break;
                 case 0:
-                default: popeImageView.contentMode = UIViewContentModeBottom; break;
+                default: snoopImageView.contentMode = UIViewContentModeScaleAspectFill; break;
             }
 
-            popeImageView.animationImages = animationFrames;
-            popeImageView.animationDuration = 0.35;
-            [popeImageView startAnimating];
-
-            if (![popeImageView isDescendantOfView: v.superview.superview.superview]) {
-                [v.superview.superview.superview insertSubview: popeImageView atIndex: 0];
+            if (![snoopImageView isDescendantOfView: v.superview.superview.superview]) {
+                [v.superview.superview.superview insertSubview: snoopImageView atIndex: 0];
             }
 
         }
@@ -92,14 +76,13 @@ static void updatePopeView(UIView *v) {
 
             // init sound if needed
             if (!didInitSoundAlready) {
-                player = [[objc_getClass("AVAudioPlayer") alloc] initWithContentsOfURL:[NSURL fileURLWithPath:ROOT_PATH_NS(@"/Library/Application Support/PopeTime/inba.mp3") isDirectory:NO] error:nil];
+                player = [[objc_getClass("AVAudioPlayer") alloc] initWithContentsOfURL:[NSURL fileURLWithPath:ROOT_PATH_NS(@"/Library/Application Support/TokeTime/the_next_episode.aac") isDirectory:NO] error:nil];
                 didInitSoundAlready = true;
             }
 
             if (![player isPlaying]) {
                 if (audioStartAt > 0) switch (audioStartAt) {
-                    case 1: player.currentTime = 22; break;
-                    case 2: player.currentTime = 44; break;
+                    case 1: player.currentTime = 10; break;
                 }
                 [player play];
             }
@@ -121,7 +104,7 @@ static void updatePopeView(UIView *v) {
 %hook SBFLockScreenDateViewController
 -(void)_updateView {
     %orig;
-    updatePopeView([self view]);
+    updateTokeView([self view]);
 }
 %end
 
@@ -129,12 +112,12 @@ static void updatePopeView(UIView *v) {
 %hook SBLockScreenDateViewController
 -(void)_updateView {
     %orig;
-    updatePopeView([self view]);
+    updateTokeView([self view]);
 }
 %end
 
 %ctor {
-    preferences = [[HBPreferences alloc] initWithIdentifier:@"net.p0358.popetime"];
+    preferences = [[HBPreferences alloc] initWithIdentifier:@"net.p0358.toketime"];
 
     [preferences registerBool:&isEnabledAllTheTime default:NO forKey:@"ShowAllTheTime"];
     [preferences registerInteger:&displayMode default:0 forKey:@"DisplayMode"];

@@ -1,11 +1,13 @@
-PopeTime
+TokeTime Reborn
 ================
 
-This tweak overlays animated John Paul II on your LS wallpaper at 21:37.
+This tweak overlays Snoop Dogg on your lock screen at 4:20 AM/PM.
+
+Updated version that supports rootless and has extra features such as audio.
 
 You can get it from repo: https://repo.p0358.net/
 
-Depiction with screenshots is available in the repo.
+![Screenshot](https://pbs.twimg.com/media/CE130CRUMAAsWKA.jpg)
 
-Original code (though **a lot** has changed) from:
+Original from:
 https://github.com/codyd51/TokeTime

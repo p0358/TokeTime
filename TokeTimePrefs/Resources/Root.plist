@@ -9,9 +9,9 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Ustawienia</string>
+			<string>Settings</string>
 			<key>footerText</key>
-			<string>Animacja jest pokazywana na ekranie blokady zawsze o godzinie 21:37. Jeśli włączysz powyższe ustawienie, animacja będzie pokazywana zawsze – jest to użyteczne do przetestowania ustawień.</string>
+			<string>The image is shown on the lock screen at 4:20. If you enable the above setting, it will always be shown – useful for testing.</string>
 		</dict>
 
 		<dict>
@@ -20,40 +20,40 @@
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
-			<string>net.p0358.popetime</string>
+			<string>net.p0358.toketime</string>
 			<key>key</key>
 			<string>ShowAllTheTime</string>
 			<key>label</key>
-			<string>Zawsze pokazuj</string>
+			<string>Always show</string>
 			<key>PostNotification</key>
-			<string>net.p0358.popetime/ReloadPrefs</string>
+			<string>net.p0358.toketime/ReloadPrefs</string>
 		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Położenie</string>
+			<string>Alignment</string>
 			<key>footerText</key>
-			<string>Dół to domyślne ustawienie, które wyświetli papieża w oryginalnym rozmiarze u dołu ekranu. Dopasuj wyświetli go na środku, dopasowując do szerokości ekranu. Wypełnij wypełni nim cały ekran, przez co część obrazu może być ucięta.</string>
+			<string>Fill is the default setting.</string>
 		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSSegmentCell</string>
 			<key>defaults</key>
-			<string>net.p0358.popetime</string>
+			<string>net.p0358.toketime</string>
 			<key>key</key>
 			<string>DisplayMode</string>
 			<key>label</key>
-			<string>Położenie</string>
+			<string>Alignment</string>
 			<key>default</key>
 			<string>0</string>
 			<key>validTitles</key>
 			<array>
-				<string>Dół</string>
-				<string>Dopasuj</string>
-				<string>Wypełnij</string>
+				<string>Fill</string>
+				<string>Fit</string>
+				<string>Bottom</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -62,7 +62,7 @@
 				<string>2</string>
 			</array>
 			<key>PostNotification</key>
-			<string>net.p0358.popetime/ReloadPrefs</string>
+			<string>net.p0358.toketime/ReloadPrefs</string>
 		</dict>
 
 		<dict>
@@ -71,8 +71,9 @@
 			<key>label</key>
 			<string>Audio</string>
 			<key>footerText</key>
-			<string>Utwór „Atlantis – September 28th” będzie odtwarzany, gdy papież pojawi się na ekranie blokady i zatrzyma się, gdy przestanie być on wyświetlany.
-Możesz określić czy utwór ma się odtwarzać od początku (lub wznawiać gdy został przerwany), bądź zawsze rozpoczynać jego odtwarzanie w jednym z predefiniowanych momentów.</string>
+			<string>Song „Dr. Dre – The Next Episode ft. Snoop Dogg, Kurupt, Nate Dogg” will be played while Snoop is shown on the lock screen and will stop when it stops being shown.
+You can specify if you want the song to play from the beginning (or resume if it was paused), or to always start it at one of the predefined timestamps.
+The song is not played if ringer is off.</string>
 		</dict>
 
 		<dict>
@@ -81,44 +82,67 @@ Możesz określić czy utwór ma się odtwarzać od początku (lub wznawiać gdy
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
-			<string>net.p0358.popetime</string>
+			<string>net.p0358.toketime</string>
 			<key>key</key>
 			<string>AudioEnabled</string>
 			<key>label</key>
-			<string>Odtwarzaj</string>
+			<string>Play</string>
 			<key>PostNotification</key>
-			<string>net.p0358.popetime/ReloadPrefs</string>
+			<string>net.p0358.toketime/ReloadPrefs</string>
 		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSSegmentCell</string>
 			<key>defaults</key>
-			<string>net.p0358.popetime</string>
+			<string>net.p0358.toketime</string>
 			<key>key</key>
 			<string>AudioStartAt</string>
-			<key>label</key>
-			<string>Położenie</string>
 			<key>default</key>
 			<string>0</string>
 			<key>validTitles</key>
 			<array>
-				<string>0:00 lub wznów</string>
-				<string>0:22</string>
-				<string>0:44</string>
+				<string>0:00 or resume</string>
+				<string>0:10</string>
 			</array>
 			<key>validValues</key>
 			<array>
 				<string>0</string>
 				<string>1</string>
-				<string>2</string>
 			</array>
 			<key>PostNotification</key>
-			<string>net.p0358.popetime/ReloadPrefs</string>
+			<string>net.p0358.toketime/ReloadPrefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Source code</string>
+			<key>action</key>
+			<string>openGitHub</string>
+			<key>icon</key>
+			<string>github.png</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Donate</string>
+			<key>action</key>
+			<string>openPayPal</string>
+			<key>icon</key>
+			<string>paypal.png</string>
 		</dict>
 
 	</array>
 	<key>title</key>
-	<string>PopeTime</string>
+	<string>TokeTime</string>
 </dict>
 </plist>
